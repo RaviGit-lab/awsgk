@@ -1,26 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from "react"
+import {Switch, Route} from "react-router-dom"
+
+import randomcolor from "randomcolor"
+import Header from "./components/Header"
+import Cart from "./pages/Cart"
+import Photos from "./pages/Photos"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload part 3.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [count, setCount] = useState(0)
+    const [color, setColor] = useState("red")
+    
+    function increment() {
+        setCount(prevCount => prevCount + 1)
+    }
+    
+    function decrement() {
+       if(count>0){
+            setCount((prevCount) => {
+              return prevCount - 1
+            })
+          }
+    }
+    
+    useEffect(() => {
+      if (count > 0 ){
+        setColor(randomcolor())
+    }else{setColor("red")} }, [count])
+    
+    
+    
+    return (
+        <div>
+            <Header />
+            <Switch>
+              <Route exact path="/"><Photos /> </Route>
+              <Route path="/cart"><Cart /> </Route>            
+            </Switch>
+            {/*
+            <h1 style={{color: color}}>{count}</h1>
+            <button onClick={increment}>Increment</button>
+            <button onClick={decrement}>Decrement</button>
+
+          
+            <div class="aplphaGrid">
+              <span class="alphabet_box" style={{backgroundColor:randomcolor()}}>A</span>
+              <span class="alphabet_box" style={{backgroundColor:randomcolor()}}>B</span>
+            </div>
+            */}
+        </div>
+        
+    )
 }
 
-export default App;
+export default App
