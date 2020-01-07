@@ -54,7 +54,7 @@ function Image({className, img}) {
           ref={ref} // used Custom hook for hover functionality
          /* onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}*/>
-            <img key={img.id} src={img.url}  className="image-grid"/>
+            <img key={img.id} src={img.url}  className="image-grid" alt="img"/>
           {heartIcon()}
           {cartIcon()}
         </div>
