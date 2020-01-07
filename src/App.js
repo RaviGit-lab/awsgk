@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from "react"
+import React from "react"
 import {Switch, Route} from "react-router-dom"
 
-import randomcolor from "randomcolor"
+// randomcolor from "randomcolor"
 import Header from "./components/Header"
 import Cart from "./pages/Cart"
 import Photos from "./pages/Photos"
