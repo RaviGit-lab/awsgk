@@ -7,7 +7,7 @@ function Image({className, img}) {
     //const [hovered,setHovered] = useState(false)
     const [hovered, ref] = useHover()
     const {toggleFavorite, addToCart, cartItems, removeFromCart} = useContext(Context)
-
+    console.log(img.url)
 /*
     function heartIcon(){
       if (img.isFavorite){
@@ -18,6 +18,7 @@ function Image({className, img}) {
     }*/
     
     function heartIcon() {
+        console.log(hovered)
         if(img.isFavorite) {
             return <i className="ri-heart-fill favorite" title="Remove as Favrite" onClick={() => toggleFavorite(img.id)}></i>
         } else if(hovered) {
@@ -54,7 +55,9 @@ function Image({className, img}) {
           ref={ref} // used Custom hook for hover functionality
          /* onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}*/>
+
             <img key={img.id} src={img.url}  className="image-grid" alt="img"/>
+            
           {heartIcon()}
           {cartIcon()}
         </div>

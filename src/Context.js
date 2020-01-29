@@ -1,26 +1,32 @@
 import React, {useState, useEffect} from "react"
-//import Imagesdata from "./images/ImagesData"
+import Imagesdata from "./ImagesData.json"
 const Context = React.createContext()
 
 function ContextProvider({children}) {
     const [allPhotos, setAllPhotos] = useState([])
     const [cartItems, setCartItems] = useState([])
+    const [localPhotos, setLocalPhotos] = useState([])
+    console.log(Imagesdata)
     
-    /*
-   //setAllPhotos(Imagesdata)
+   //setLocalPhotos(Imagesdata)
+/*
     useEffect(() => {
-       setAllPhotos(Imagesdata)
+       setLocalPhotos(Imagesdata)
     }, [])
 */
     
-    const url = "https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json"
+    //const url = "https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json"
 
     //const url = "./Images.json"
        
     useEffect(() => {
-        fetch(url)
+        setLocalPhotos(Imagesdata)
+        setAllPhotos(Imagesdata)
+
+       /* fetch(url)
             .then(res => res.json())
-            .then(data => setAllPhotos(data))
+            .then(data => setAllPhotos(data)) */
+
     }, [])
  
 
@@ -56,7 +62,8 @@ function emptyCart(){
 }
 
    // console.log(cartItems)
-    
+   console.log("allPhotos:", allPhotos)
+   console.log("localPhotos:", localPhotos)
     return (
         <Context.Provider value={{allPhotos, toggleFavorite, addToCart, cartItems, removeFromCart, emptyCart }}>
             {children}
